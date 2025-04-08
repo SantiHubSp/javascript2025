@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Introduce un número:<imput id="num1" type="number"><br>
+    Introduce otro número:<imput id="num2" type="number"><br>
+    <button onclick="">Sumar</button><button onclick="">Multiplicar</button>
+
+    <script>
+        function sumarNumeros(){
+            //obtenemos los objetos imput
+            let n1=document.getElementById("num1");
+            let n2=document.getElementById("num2");
+            //a través de la propiedad value de los objetos imput,
+            //accedemos a su contenido
+            let suma=n1.value+n2.value;
+            alert("La suma es: "+suma);
+        }
+        function multiplicarNumeros(){
+
+        }
+    </script>
+
+
+</body>
+</html>
