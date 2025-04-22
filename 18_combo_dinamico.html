@@ -20,10 +20,13 @@
         //se encarga de generr dinamicamente el contenido del select
         //a partir del array ciudades
         function cargarCiudades(){
+            //hemos creado un conjunto a partir de un array para que no se repitan los elementos
+         let conjunto=new Ser(ciudades);
          let html="";
          for (let c of ciudades){
-            html+=`<option value="${c}">${c}</option>`;
+            html=html+`<option>${c}</option>`;
          }
+         document.getElementById("ciudades").innerHTML=html;
         }
     </script>
 </body>
