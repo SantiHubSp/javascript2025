@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Introduce nombre de contacto:
+    <input type="text" id="nombre" placeholder="Nombre de contacto">
+    <button onclick="guardar();">Guardar</button>
+    <br><br>
+    <button onclick="mostrar();">Mostrar</button>
+    <div id="listaNombres">
+
+    </div>
+
+    <script>
+        //array donde guardamos los nombres
+        let nombres = [];
+        function guardar() {
+            let n=document.getElementById("nombre").value;
+            for (let i=0; i<nombres.length; i++){
+                if (nombres[i] == n){
+                    alert("El contacto ya existe");
+                    return;
+                }
+            }
+            if (n == "") {
+                alert("Introduce un nombre");
+                return;
+            }
+            nombres.push(n);
+            alert("Contacto guardado");
+        }
+        function mostrar() {
+            let html = "";
+            for (let n of nombres) {
+                html += "<b>" + n + "</b><imag src='papelera.jpg' haight'5px'><br>";
+            }
+            document.getElementById("listaNombres").innerHTML = html;
+        }
+    </script>
+</body>
+</html>
