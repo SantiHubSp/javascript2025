@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    Temática:<input type="text" id="tematica"><br><br>
-    <button onclick="buscar();">Buscar</button>
-    <div id="resultados">
+<body onload="cargarTematicas();">
+    Temática:
+    <select id="tematica" onchange="cargarDatos();">
 
+    </select>
+    <br><br>
 
-    </div>
+    <table id="resultados">
+
+    </table>
 
 
 
@@ -24,25 +27,35 @@
         {"tematica":"cocina","direccion":"http://www.fogones.es/"},
         {"tematica":"juegos","direccion":"http://www.game.es/"}
         ];
-        function buscar(){
-
-            let resultados=[];
-            let tematica=document.getElementById("tematica").value;
-            tematica=tematica.toLowerCase();
-            //recorremos el array de datos y buscamos los JSON que 
-            //pertenezcan a la temática introducida. Los que coincidan
-            //los guardamos en la variable resultados
+        function cargarTematicas(){
+        //creamos un array solo para las temáticas
+            let tematicas=[];
+            tematicas.push("Todos");
+            for(let d of datos){
+                tematicas.push(d.tematica);
+            }
+            //creamos un conjunto a partir de array de temáticas
+            //y así eliminamos duplicados
+            let conjunto=new Set(tematicas);
+            let html="";
+            for(let c of conjunto){
+                html=html+`<option>${c}</option>`;
+            }
+            document.getElementById("tematica").innerHTML=html;
+        }
+        //debe generar tantas filas de tabla como jsaon del array coincidan
+        //con la temática seleccionada
+        function cargarDatos(){
+            let tematicaSeleccionada=document.getElementById("tematica").value;
+            let html="<tr><th>Temática</th><th>Dirección</th></tr>";
             for(let r of datos){
-                if(r.tematica==tematica){
-                    resultados.push(r);
+                //si el elemento del array coincide con la temática seleccionada, o se ha seleccionado "Todos"
+                //en ambos casos habría que construir una fila de tabla
+                if(r.tematica==tematicaSeleccionada||tematicaSeleccionada=="Todos"){
+                    html=html+`<tr><td>${r.tematica}</td><td>${r.direccion}</td></tr>`;
                 }
             }
-            //volcar el contenido de array resultados en el div
-            let html="";
-            for(let d of resultados){
-                //html=html+d+"<br>";
-                html+=d.tematica+","+d.direccion+"<br>";
-            }
+            //volcado en la etiqueta tabla
             document.getElementById("resultados").innerHTML=html;
         }
     </script>
