@@ -12,21 +12,23 @@
     <button onclick="ver();">ver seleccionado</button>
 
     <script>
-        let ciudades=["Cáceres", "Ávila", "Córdoba", "Zaragoza"];
+        let ciudades=[{ciudad:"Cáceres",poblacion:120000},
+                      {ciudad:"Zaragoza",poblacion:680000},
+                      {ciudad:"Ávila",poblacion:57000},
+                      {ciudad:"Córdoba",poblacion:720000}];
         function ver(){
             let valor=document.getElementById("ciudades").value;
             console.log(valor);
         }
-        //se encarga de generar dinamicamente el contenido del select
-        //a partir del array ciudades
+        //se encarga de generar dinámicamente el contenido del select
+        //a partir del array de ciudades
         function cargarCiudades(){
-            //hemos creado un conjunto a partir de un array para que no se repitan los elementos
-         let conjunto=new Ser(ciudades);
-         let html="";
-         for (let c of ciudades){
-            html=html+`<option>${c}</option>`;
-         }
-         document.getElementById("ciudades").innerHTML=html;
+            
+            let html="";
+            for(let c of ciudades){
+                html=html+`<option value="${c.poblacion}">${c.ciudad}</option>`; 
+            }
+            document.getElementById("ciudades").innerHTML=html;
         }
     </script>
 </body>
