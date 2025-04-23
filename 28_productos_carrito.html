@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Catálogo de productos</h1>
+    <table id="catalogo">
+        <tr>
+            <th>Producto</th>
+            <th>Categoria</th>
+            <th>Precio</th>
+        </tr>
+        <tr>
+            <td>pan</td>
+            <td>Alimentación</td>
+            <td>1.2</td>
+        </tr>
+        <tr>
+            <td>guantes</td>
+            <td>Textil</td>
+            <td>22.5</td>
+        </tr>
+        <tr>
+            <td>zapatos</td>
+            <td>Textil</td>
+            <td>65.0</td>
+        </tr>  
+        <tr>
+            <td>pantalla</td>
+            <td>Informática</td>
+            <td>200</td>
+        </tr>
+        <tr>
+            <td>teclado</td>
+            <td>Informática</td>
+            <td>35.8</td>
+        </tr>
+        <tr>
+            <td>leche</td>
+            <td>Alimentación</td>
+            <td>2.0</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Añadir </td>
+            <td>5.0</td>
+    </table>
+    <br><br>
+    <h1>Carrito de compra</h1>
+    <table id="carrito">
+    <script>
+        let catalogo=[
+        {producto:"pan",categoria:"Alimentación",precio:1.2},
+        {producto:"guantes",categoria:"Textil",precio:22.5},
+        {producto:"zapatos",categoria:"textil",precio:65.0},
+        {producto:"pantalla",categoria:"Informática",precio:200},
+        {producto:"teclado",categoria:"Informática",precio:35.8},
+        {producto:"leche",categoria:"Alimentación",precio:2.0}
+    ];
+        let carrito=[];
+        let total=0;
+        let categoria="Alimentación";
+        let productos=catalogo.filter((p)=>p.categoria==categoria);
+        productos.forEach((p)=>{
+            carrito.push(p);
+            total+=p.precio;
+        });
+        console.log(carrito);
+        console.log(`Total: ${total}`);
+    </script>
+
+</body>
+</html>
